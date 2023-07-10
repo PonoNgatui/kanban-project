@@ -53,7 +53,7 @@ class TaskController extends Controller
                 'due_date' => '2023-04-30',
                 'status' => 'completed',
             ],
-        ];
+        ]; 
     }
 
     public function index()
@@ -64,5 +64,15 @@ class TaskController extends Controller
         'pageTitle' => $pageTitle, //Ditambahkan
         'tasks' => $tasks,
     ]);
+    }
+
+    public function edit($id)
+    {
+        $pageTitle = 'Edit Task';
+        $tasks = $this->tasks;
+
+        $task = $tasks[$id - 1];
+
+        return view('tasks.edit', ['pageTitle' => $pageTitle, 'task' => $task]);
     }
 }
